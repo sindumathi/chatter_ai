@@ -1,22 +1,43 @@
+import React, { useRef, useImperativeHandle } from "react";
 import { TbLoader3 } from "react-icons/tb";
 import { RiSendPlane2Fill } from "react-icons/ri";
+
+export type ChildRefActions = {
+  focus: () => void;
+};
+
 export type TextAreaChange = React.ChangeEvent<HTMLTextAreaElement>;
 interface TextAreaProps {
   value: string;
   handleChange: (value: string) => void;
   className?: string;
   isLoading?: boolean;
+  ref: React.Ref<ChildRefActions>;
 }
 
 export default function TextBox(props: TextAreaProps) {
-  const { value, handleChange, isLoading = false, ...rest } = props;
+  const { value, handleChange, isLoading = false, ref, ...rest } = props;
+  const localRef = useRef<HTMLTextAreaElement>(null);
+
+  // Expose the focus method to the parent component
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      localRef.current?.focus();
+    },
+  }));
 
   const handleBlur = () => {};
-
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key.toUpperCase() === "ENTER") {
+      e.preventDefault();
+      e.currentTarget?.form?.requestSubmit();
+    }
+  };
   return (
     <div className="relative rounded-md  border border-gray-300 bg-white shadow-sm">
       <textarea
         aria-label="Enter message"
+        ref={localRef}
         autoFocus
         name="chatInput"
         className="w-full field-sizing-content min-h-[3lh] max-h-[40vh]  focus:outline-none focus:ring-0 resize-none overflow-y-auto border-transparent text-gray-900 p-2 "
@@ -24,7 +45,8 @@ export default function TextBox(props: TextAreaProps) {
         value={value}
         onBlur={handleBlur}
         onChange={(e) => handleChange(e?.target?.value)}
-        placeholder=""
+        onKeyDown={handleKeyDown}
+        placeholder="Ask Anything..."
         {...rest}
       />
       <div className="absolute bottom-2 right-3 flex items-center justify-between">

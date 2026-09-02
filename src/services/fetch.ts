@@ -1,22 +1,13 @@
 const BASE_URL = "https://router.huggingface.co/v1";
 
 export async function fetchAPI(endpoint: string, options = {}) {
-  try {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
-      ...options,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.VITE_HUG_FACE_API_KEY}`,
-      },
-    });
+  const response = await fetch(`${BASE_URL}${endpoint}`, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${import.meta.env.VITE_HUG_FACE_API_KEY}`,
+    },
+  });
 
-    return response;
-  } catch (error) {
-    return {
-      ok: false,
-      success: false,
-      status: 100,
-      error: error,
-    };
-  }
+  return response;
 }
