@@ -1,75 +1,47 @@
-# React + TypeScript + Vite
+# Chatter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Chatter is a modern AI-powered chat application built with React 19+ and Vite. It integrates with the Hugging Face API to generate AI responses and provides a simple, responsive interface for interacting with the model.
 
-Currently, two official plugins are available:
+## Features
+   AI-powered conversations using the Hugging Face API
+   Responsive chat interface and real-time display of user and AI messages
+   Streaming and displaying messages as it loads
+   Persistent message storage in localstorage
+   Clear chat  clears the localstorage and state
+   Built with React 19+ and Vite
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech stack
+  React 19+
+  Vite
+  JavaScript
+  Hugging Face API
+  Tailwind css
+  Typescript
+## Clone the repository
+    https://github.com/sindumathi/chatter_ai.git
+##  Navigate to the project
+    cd chatter
+## Install dependencies
+    npm install
+## Configure the Hugging Face API
+    Create a .env file in the root of the project:
+     
+      VITE_HUG_FACE_API_KEY=your_api_key_here
 
-## React Compiler
+      **Replace your_api_key_here with your Hugging Face API token.**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Start the development server
+    npm run dev
 
-## Expanding the ESLint configuration
+    The application will be available at the local URL displayed by Vite, typically:   http://localhost: 3000
+## Production Build
+    To create an optimized production build:
+      npm run build
+    To preview the production build locally:
+      npm run preview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## How It Works
+User enter he prompt in the text area  and upon form submit --->  it interacts with the Hugging face APi through fetch---> receives response and checks response.ok----> streams data if response is ok and updates the UI as it stream through the MessageHistory state---> After the stream is complete  updates the local storage for data persistance. Clear chat empty's the MessageHistory state and localstorage.
+ 
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+      
