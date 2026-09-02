@@ -3,12 +3,12 @@
 Chatter is a modern AI-powered chat application built with React 19+ and Vite. It integrates with the Hugging Face API to generate AI responses and provides a simple, responsive interface for interacting with the model.
 
 ## Features
-   AI-powered conversations using the Hugging Face API
-   Responsive chat interface and real-time display of user and AI messages
-   Streaming and displaying messages as it loads
-   Persistent message storage in localstorage
-   Clear chat  clears the localstorage and state
-   Built with React 19+ and Vite
+   * AI-powered conversations using the Hugging Face API
+   * Responsive chat interface and real-time display of user and AI messages
+   * Streaming and displaying messages as it loads
+   * Persistent message storage in localstorage
+   * Clear chat  clears the localstorage and state
+   * Built with React 19+ and Vite
 
 ## Tech stack
     * React 19+
