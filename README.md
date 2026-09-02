@@ -11,12 +11,12 @@ Chatter is a modern AI-powered chat application built with React 19+ and Vite. I
    Built with React 19+ and Vite
 
 ## Tech stack
-  React 19+
-  Vite
-  JavaScript
-  Hugging Face API
-  Tailwind css
-  Typescript
+    * React 19+
+    * Vite
+    * JavaScript
+    * Hugging Face API
+    * Tailwind css
+    * Typescript
 ## Clone the repository
     https://github.com/sindumathi/chatter_ai.git
 ##  Navigate to the project
