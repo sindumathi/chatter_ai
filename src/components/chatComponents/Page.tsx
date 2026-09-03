@@ -15,7 +15,7 @@ interface MessageHistoryDataType {
 
 export default function Page() {
   const baseId = useId();
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [chatPrompt, setChatPrompt] = useState("");
   const [messageHistory, setMessageHistory] = useState<
     MessageHistoryDataType[]
@@ -111,7 +111,7 @@ export default function Page() {
             } catch (error) {
               console.log("error", error);
               setIsLoading(false);
-              setErrorMessage(MESSAGES[100]);
+              setErrorMessage(MESSAGES[422]);
             }
           }
         }
@@ -123,7 +123,7 @@ export default function Page() {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
-      setErrorMessage(MESSAGES[100]);
+      setErrorMessage(MESSAGES[422]);
     } finally {
       setIsLoading(false);
     }

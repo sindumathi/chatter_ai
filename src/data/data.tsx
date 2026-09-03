@@ -10,7 +10,7 @@ export const MESSAGES: MessageProp = {
   502: "The AI service is temporarily unavailable. Please, try again after sometime.",
   503: "The AI service is currently unavailable. Please, try again after sometime.",
   504: "The AI service is currently busy. Please, try again after sometime.",
-  100: "Something went wrong.Please, try again later.",
+  422: "Something went wrong.Please, try again later.",
 };
 
 export const response = {
